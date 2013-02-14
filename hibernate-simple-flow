@@ -1,0 +1,149 @@
+SessionFactory factory=SessionFactoryGenerator.getSessionFactory();
+===================================================================
+CONSOLE-INFORMATION:
+--------------------
+SessionFactoryGenerator.static()
+Student.enclosing_method()
+Student.Student()
+Student.getStudentId()
+Student.Student()
+Student.Student()
+Student.getAge()
+Student.getName()
+Student.setAge()
+Student.setName()
+SessionnFactoryGenerator STATIC BLOCK EXIT
+SessionFactoryGenerator.getSessionFactory()
+
+LOG-INFORMATION:
+----------------
+INFO - Configuration resource: new-hibernate.cfg.xml 
+DEBUG - hibernate.connnnnection.driver_class=com.mysql.jdbc.Driver 
+DEBUG - hibernate.connection.url=jdbc:mysql://localhost:3306/hibernate_tests 
+DEBUG - hibernate.connection.username=root 
+DEBUG - hibernate.connection.password=f2Idv3010 
+DEBUG - hibernate.dialect=org.hibernate.dialect.MySQLDialect 
+DEBUG - hibernate.hbm2ddl.auto=update
+
+INFO - Mapping resource: aio/beans/Student.hbm.xml 
+
+INFO - Mapping class: aio.beans.Student -> STUDENT
+DEBUG - Mapped property: studentId -> STUDENT_ID 
+DEBUG - Mapped property: age -> AGE 
+DEBUG - Mapped property: name -> NAME
+
+INFO - Configured SessionFactory: null
+<loads properties from file and adds sensiable defaults to other properties>
+DEBUG - properties: {
+  hibernate.connection.password=f2Idv3010,
+	hibernate.connection.username=root,
+	user.dir=/home/pcnicky/development/java/hibernate/HibernateCoreOne,
+	os.name=Linux,
+	hibernate.connnnnection.driver_class=com.mysql.jdbc.Driver,
+	user.home=/home/pcnicky,
+	hibernate.dialect=org.hibernate.dialect.MySQLDialect,
+	hibernate.connection.url=jdbc:mysql://localhost:3306/hibernate_tests,
+	hibernate.hbm2ddl.auto=update,
+	etc...
+}
+DEBUG - Preparing to build session factory
+INFO - Hibernate connection pool size: 20 <this is default>
+DEBUG - created connection to: jdbc:mysql://localhost:3306/hibernate_tests, Isolation Level: 4
+DEBUG - instantiating session factory with properties <obtained above>
+
+
+
+
+StudentTableDAO studentTable=StudentTableDAOImplementation.createNewInstance(factory);
+======================================================================================
+CONSOLE-INFORMATION:
+--------------------
+StudentTableDAOImplementation.STATIC_BLOCK()
+StudentTableDAOImplementation.createNewInstance()
+StudentTableDAOImplementation.StudentTableDAOImplementation()
+
+LOG-INFORMATION:
+----------------
+<empty>
+
+
+Student student=new Student();
+==============================
+CONSOLE-INFORMATION:
+--------------------
+Student.Student()
+Student [studentId=0, age=0, name=]
+
+LOG-INFORMATION:
+----------------
+<empty>
+
+
+student.setAge(10);
+student.setName("Devesh Raghwan");
+==================================
+CONSOLE-INFORMATION:
+--------------------
+Student.setAge()
+Student.setName()
+Student [studentId=0, age=10, name=Devesh Raghwan]
+
+LOG-INFORMATION:
+----------------
+<empty>
+
+
+
+studentTable.addStudent(student);
+=================================
+CONSOLE-INFORMATION:
+--------------------
+SESSION OPENED
+TRANSACTION STARTED
+Student.setStudentId()
+Student.getAge()
+Student.getName()
+STUDENT INSTANCE SAVED: studentId is-> 19
+Student.getStudentId()
+Student.getAge()
+Student.getName()
+Student.getStudentId()
+Student.getAge()
+Student.getName()
+TRANSACTION COMMITED
+
+LOG-INFORMATION:
+----------------
+DEBUG - opened session 
+DEBUG - begin 
+DEBUG - opening JDBC connection 
+
+DEBUG - first free id: 20 <where to insert if at all>
+
+DEBUG - generated identifier: 20, using strategy: org.hibernate.id.IncrementGenerator 
+DEBUG - saving [aio.beans.Student#20] 
+DEBUG - commit 
+DEBUG - automatically flushing session 
+DEBUG - flushing session 
+
+DEBUG - aio.beans.Student{studentId=20, name=Devesh Raghwan, age=10} 
+DEBUG - executing flush 
+DEBUG - Inserting entity: [aio.beans.Student#20] 
+DEBUG - about to open PreparedStatement (open PreparedStatements: 0, globally: 0) 
+DEBUG - insert into STUDENT (AGE, NAME, STUDENT_ID) values (?, ?, ?) 
+DEBUG - preparing statement
+
+DEBUG - Dehydrating entity: [aio.beans.Student#20] 
+DEBUG - binding '10' to parameter: 1 
+DEBUG - binding 'Devesh Raghwan' to parameter: 2 
+DEBUG - binding '20' to parameter: 3 
+DEBUG - Adding to batch 
+DEBUG - Executing batch size: 1 
+DEBUG - about to close PreparedStatement (open PreparedStatements: 1, globally: 1) 
+DEBUG - closing statement 
+DEBUG - post flush 
+
+DEBUG - committed JDBC Connection 
+
+DEBUG - closing session 
+DEBUG - closing JDBC connection (open PreparedStatements: 0, globally: 0) (open ResultSets: 0, globally: 0) 
